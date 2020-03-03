@@ -21,8 +21,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${fontFamily.base};
     font-size: ${fontSize.base};
     font-weight: ${fontWeight.base};
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
   }
 
   main {

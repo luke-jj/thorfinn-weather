@@ -5,7 +5,7 @@ import { shadows } from '../utils';
 
 const Searchbar = ({ className }) => (
   <div className={className}>
-    <Input type="text" placeholder="cityname..."/>
+    <Input type="text" placeholder="city name..."/>
   </div>
 );
 

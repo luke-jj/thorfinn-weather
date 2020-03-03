@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+// eslint-disable-next-line
 import styled from 'styled-components/macro';
 import { getWeather } from './services/dummyWeather';
 import { Searchbar } from './components';
@@ -22,6 +23,7 @@ const App = () => {
       ))}
 
       <div css={`
+        margin-top: 125px;
         display: flex;
         justify-content: center;
       `}>
