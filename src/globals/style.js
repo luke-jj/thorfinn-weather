@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
-import theme from './theme';
+import { bg, fg, fontFamily, fontSize, fontWeight } from '../utils';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -16,11 +16,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    background: ${theme.colors.bg};
-    color: ${theme.colors.fg};
-    font-family: ${theme.fontFamilies.base};
-    font-size: ${theme.fontSizes.base};
-    font-weight: ${theme.fontWeights.base};
+    background: ${bg};
+    color: ${fg};
+    font-family: ${fontFamily.base};
+    font-size: ${fontSize.base};
+    font-weight: ${fontWeight.base};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

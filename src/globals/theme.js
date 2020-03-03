@@ -1,4 +1,4 @@
-export default {
+const theme = {
   colorPalette: {
     primary: "rgb(22, 82, 143)",
     secondary: "#666",
@@ -38,6 +38,8 @@ export default {
     active: "rgba(0, 0, 0, 0.05) 0px 2px 4px 0px",
   },
 };
+
+export default theme;
 
 // ## primary button
 // background                      rgba(255, 255, 255, 0.15)

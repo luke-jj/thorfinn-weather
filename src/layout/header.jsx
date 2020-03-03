@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { shadows } from '../utils';
+import { bg, shadows } from '../utils';
 import { H2 } from '../elements';
-import theme from '../globals/theme';
 
 const Header = ({ className }) => (
   <header className={className}>
@@ -13,7 +12,7 @@ const Header = ({ className }) => (
 );
 
 export default styled(Header)`
-  background: ${theme.colors.bg};
+  background: ${bg};
   height: 50px;
   ${shadows[0]}
 `;

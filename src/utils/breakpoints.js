@@ -1,18 +1,23 @@
 import { css } from 'styled-components';
-import theme from '../globals/theme';
 
-export const above = Object.keys(theme.breakpoints).reduce((acc, label) => {
+const breakpoints = {
+  small: 400,
+  med: 960,
+  large: 1140
+};
+
+export const above = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (min-width: ${theme.breakpoints[label]}px) {
+    @media (min-width: ${breakpoints[label]}px) {
       ${css(...args)}
     }
   `
   return acc;
 }, {});
 
-export const below = Object.keys(theme.breakpoints).reduce((acc, label) => {
+export const below = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${theme.breakpoints[label]}px) {
+    @media (max-width: ${breakpoints[label]}px) {
       ${css(...args)}
     }
   `

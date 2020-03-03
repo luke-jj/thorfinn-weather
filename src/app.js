@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { getWeather } from './services/dummyWeather';
 import GlobalStyle from './globals/style';
-import { colors } from './utils';
 import Header from './layout/header';
 
 const App = () => {
@@ -13,7 +12,6 @@ const App = () => {
 
   return (
     <Router>
-      { colors() }
       <GlobalStyle />
       <Header />
       <p>This is Thorfinn's weather service.</p>
