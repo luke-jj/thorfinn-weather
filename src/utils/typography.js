@@ -1,11 +1,12 @@
 export const fontFamily = {
   base: "Raleway, 'Helvetiva Neue', sans-serif",
-  code: "'Source Code Pro', Menlo, Monaco, Consolas, monospace"
+  code: "'Source Code Pro', Menlo, Monaco, Consolas, monospace",
 };
 
 export const fontSize = {
   base: '13px',
   lead: '14px',
+  highlight: '16px',
   heading: '22px',
 };
 

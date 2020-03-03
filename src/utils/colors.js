@@ -1,5 +1,6 @@
 const colorPalette = {
-  primary: "rgb(22, 82, 143)",
+  // primary: "rgb(22, 82, 143)",
+  primary: "rgb(11, 140, 227)",
   secondary: "#666",
 };
 

@@ -1,24 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import Navbar from './navbar';
 import { bg, shadows } from '../utils';
-import { H2 } from '../elements';
+import { Link, H2 } from '../elements';
 
 const Header = ({ className }) => (
   <header className={className}>
     <Container>
-      <H2 noMargin>Thorfinn Weather App</H2>
+      <Link to="/">
+        <H2 noMargin>Thorfinn</H2>
+      </Link>
+      <Navbar />
     </Container>
   </header>
 );
 
 export default styled(Header)`
   background: ${bg};
-  height: 50px;
+  height: 76px;
   ${shadows[0]}
 `;
 
 const Container = styled.div`
   height: 100%;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
