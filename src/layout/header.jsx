@@ -31,9 +31,7 @@ export default styled(Header)`
 const Container = styled.div`
   height: 100%;
   padding: 0 16px;
-  // display: grid;
-  // grid-template-columns: repeat(3, auto);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
 `;

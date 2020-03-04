@@ -18,7 +18,7 @@ const errorHandler = error => {
 };
 
 const weatherAxios = axios.create({
-  baseURL: config.WEATHER_API_URL,
+  baseURL: config.API_URL,
 });
 
 weatherAxios.interceptors.response.use(null, errorHandler);

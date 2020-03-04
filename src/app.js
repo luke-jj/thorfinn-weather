@@ -27,8 +27,8 @@ const App = () => {
 
   useEffect(() => {
     const loadUtcTime = async () => {
-      const { data: utcTime } = await getCurrentUtcTime()
-      setTime(utcTime);
+      const { data: time } = await getCurrentUtcTime()
+      setTime(time.currentUnixTime);
     };
 
     loadUtcTime();
@@ -58,13 +58,6 @@ const App = () => {
       </div>
       { weather.map(w => (
         <div key={w.city.id}>
-          <p>The weather in {w.city.name} is {w.list[0].main.temp} Celsius.</p>
-          <p>
-            `.weather` id: {w.list[0].weather[0].id}, `.main`: {w.list[0].weather[0].main} `.description`: {w.list[0].weather[0].description}
-          </p>
-          <p> weather icon:
-            <img src={`https://openweathermap.org/img/wn/${w.list[0].weather[0].icon}@2x.png`} alt="weather"/>
-          </p>
           <h2>w.city</h2>
           <ul>
             <li>.name: {w.city.name}</li>
@@ -73,7 +66,7 @@ const App = () => {
             <li>Sunset: {moment(adjustTimeZone(w.city.sunset)).format()}</li>
             <li>.timezone {w.city.timezone}</li>
             <li>.timezone toUtcString: {toUtcString(w.city.timezone)} </li>
-            <li>time in {w.city.name}: {moment.unix(time + w.city.timezone).utc().format("hh : mm : ss")}</li>
+            <li>time in {w.city.name}: {moment.unix(time + w.city.timezone).utc().format("HH : mm : ss")}</li>
 
           </ul>
           <h2>w.list[0]</h2>
@@ -84,6 +77,16 @@ const App = () => {
             <li>main.feels_like: {w.list[0].main.feels_like}</li>
             <li>main.humidity: {w.list[0].main.humidity}%</li>
             <li>clouds.all: {w.list[0].clouds.all}%</li>
+            <li>wind.speed: {w.list[0].wind.speed}</li>
+            <li>wind.degree: {w.list[0].wind.deg}</li>
+            <li>weather.id: {w.list[0].weather[0].id}</li>
+            <li>weather.main: {w.list[0].weather[0].main}</li>
+            <li>weather.description: {w.list[0].weather[0].description}</li>
+            <li>weather.icon: {w.list[0].weather[0].icon}</li>
+            <li>
+              weather.icon image:
+              <img src={`https://openweathermap.org/img/wn/${w.list[0].weather[0].icon}@2x.png`} alt="weather"/>
+            </li>
           </ul>
         </div>
       ))}
