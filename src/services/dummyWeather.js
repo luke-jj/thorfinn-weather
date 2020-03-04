@@ -1,6 +1,5 @@
+import weather from './fakeWeather.json';
+
 export const getWeather = () => {
-  return {
-    location: 'Berlin',
-    weather: '28'
-  };
+  return weather;
 };
