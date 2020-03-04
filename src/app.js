@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import { getWeather } from './services/dummyWeather';
 import { getFullName } from './services/countryCode';
-import { getCurrentFileTime } from './services/time';
+import { getCurrentUtcTime } from './services/time';
 import { Searchbar } from './components';
 import GlobalStyle from './globals/style';
 import Header from './layout/header';
@@ -27,15 +27,8 @@ const App = () => {
 
   useEffect(() => {
     const loadUtcTime = async () => {
-      const { data } = await getCurrentFileTime()
-
-      // convert filetime to unix timestamp
-      const datestring = data.currentFileTime.toString();
-      const fileTime = parseInt(datestring.slice(0, -4));
-      const epoch = Date.UTC(1601,0,1);
-      const utcMiliseconds = epoch + fileTime;
-      const utcSeconds = parseInt(utcMiliseconds.toString().slice(0, -3));
-      setTime(utcSeconds);
+      const { data: utcTime } = await getCurrentUtcTime()
+      setTime(utcTime);
     };
 
     loadUtcTime();

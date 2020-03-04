@@ -21,19 +21,13 @@ const weatherAxios = axios.create({
   baseURL: config.WEATHER_API_URL,
 });
 
-const timeAxios = axios.create({
-  baseURL: config.TIME_API_URL,
-});
-
 weatherAxios.interceptors.response.use(null, errorHandler);
-timeAxios.interceptors.response.use(null, errorHandler);
 
 function setJwt(jwt) {
   weatherAxios.defaults.headers.common['x-auth-token'] = jwt;
 }
 
 export default {
-  getTime: timeAxios.get,
   get: weatherAxios.get,
   post: weatherAxios.post,
   put: weatherAxios.put,
