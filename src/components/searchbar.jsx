@@ -1,13 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Input } from '../elements';
 import { shadows } from '../utils';
 
-const Searchbar = ({ className }) => (
-  <div className={className}>
-    <Input type="text" placeholder="city name..."/>
-  </div>
+const Searchbar = ({ className, input, onChange, onSubmit }) => (
+  <form onSubmit={onSubmit}>
+    <div className={className}>
+      <Input
+        type="text"
+        placeholder="city name..."
+        value={input}
+        onChange={onChange}
+      />
+    </div>
+  </form>
 );
+
+Searchbar.propTypes = {
+  input: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+}
 
 export default styled(Searchbar)`
   width: 300px;

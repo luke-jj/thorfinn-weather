@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line
 import styled from 'styled-components/macro';
 import moment from 'moment';
 
-import { getWeather } from './services/dummyWeather';
+import { getWeather as getFakeWeather } from './services/dummyWeather';
+import { getWeather } from './services/weather';
 import { getFullName } from './services/countryCode';
 import { getCurrentUtcTime } from './services/time';
 import { Searchbar } from './components';
@@ -21,9 +24,11 @@ const toUtcString = timezone => {
   return `UTC ` + (hours > 0 ? '+ ' + hours : '- ' + Math.abs(hours));
 };
 
+
 const App = () => {
   const [weather, setWeather] = useState([]);
   const [time, setTime] = useState(0);
+  const [cityInput, setCityInput] = useState('');
 
   useEffect(() => {
     const loadUtcTime = async () => {
@@ -41,12 +46,34 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    setWeather(w => [ ...w, getWeather() ]);
+    setWeather(w => [ ...w, getFakeWeather() ]);
   }, []);
+
+  const handleInput = e => {
+    setCityInput(e.target.value)
+  };
+
+  const handleSearch = async e => {
+    e.preventDefault();
+    try {
+      const { data } = await getWeather(cityInput);
+      setCityInput('');
+      setWeather(w => [ data ]);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data);
+      } else if (ex.response && ex.response.status === 400) {
+        toast.error(ex.response.data);
+      } else {
+        toast.error('Something went wrong fetching the weather.');
+      }
+    }
+  };
 
   return (
     <Router>
       <GlobalStyle />
+      <ToastContainer />
       <Header time={time}/>
       <div css={`
         margin-top: 100px;
@@ -54,7 +81,11 @@ const App = () => {
         display: flex;
         justify-content: center;
       `}>
-        <Searchbar />
+        <Searchbar
+          input={cityInput}
+          onChange={handleInput}
+          onSubmit={handleSearch}
+        />
       </div>
       { weather.map(w => (
         <div key={w.city.id}>

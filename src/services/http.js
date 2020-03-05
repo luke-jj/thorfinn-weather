@@ -17,20 +17,17 @@ const errorHandler = error => {
   return Promise.reject(error);
 };
 
-const weatherAxios = axios.create({
-  baseURL: config.API_URL,
-});
-
-weatherAxios.interceptors.response.use(null, errorHandler);
+axios.defaults.baseURL = config.API_URL;
+axios.interceptors.response.use(null, errorHandler);
 
 function setJwt(jwt) {
-  weatherAxios.defaults.headers.common['x-auth-token'] = jwt;
+  axios.defaults.headers.common['x-auth-token'] = jwt;
 }
 
 export default {
-  get: weatherAxios.get,
-  post: weatherAxios.post,
-  put: weatherAxios.put,
-  delete: weatherAxios.delete,
+  get: axios.get,
+  post: axios.post,
+  put: axios.put,
+  delete: axios.delete,
   setJwt,
 };
