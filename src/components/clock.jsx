@@ -10,7 +10,11 @@ const Clock = ({ time, className }) => (
     <br />
     {moment.unix(time).utc().format("HH : mm : ss")}
     <br />
-    {time}
+    {time > 60 ? (
+      moment.unix(time).utc().format("dddd, MMMM Do YYYY")
+    ) : (
+      '\u00A0'
+    )}
   </div>
 );
 

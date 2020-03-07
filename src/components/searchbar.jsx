@@ -30,7 +30,7 @@ export default styled(Searchbar)`
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, .15);
   text-align: center;
-  transition: background-color .3s ease-out;
+  transition: background-color .3s ease-out, box-shadow .3s ease-out;
   display: flex;
   align-items: center;
 
