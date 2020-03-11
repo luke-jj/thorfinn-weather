@@ -4,11 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line
 import styled from 'styled-components/macro';
-import moment from 'moment';
 
 import { getWeather as getFakeWeather } from './services/dummyWeather';
 import { getWeather } from './services/weather';
-import { getFullName } from './services/countryCode';
 import { getCurrentUtcTime } from './services/time';
 import { Searchbar } from './components';
 import GlobalStyle from './globals/style';

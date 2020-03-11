@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { fontSize } from '../utils';
+import styled from 'styled-components/macro';
+import { fontSize, fgDisabled } from '../utils';
 
 const Navbar = ({ className }) => (
   <nav className={className}>
     <ul>
-      <li>User</li>
+      <li>
+        <i className="fa fa-user"></i>
+      </li>
     </ul>
   </nav>
 );
@@ -20,6 +22,8 @@ export default styled(Navbar)`
     list-style-type: none;
 
     li {
+        font-size: 26px;
+        color: ${fgDisabled};
     }
   }
 `;
