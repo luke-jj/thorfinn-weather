@@ -5,13 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line
 import styled from 'styled-components/macro';
 
-import { getWeather as getFakeWeather } from './services/dummyWeather';
 import { getWeather } from './services/weather';
 import { getCurrentUtcTime } from './services/time';
-import { Searchbar } from './components';
+import { Searchbar, WeatherCard } from './components';
 import GlobalStyle from './globals/style';
 import Header from './layout/header';
-import WeatherCard from './components/weathercard';
 
 const App = () => {
   const [weather, setWeather] = useState([]);
@@ -33,12 +31,6 @@ const App = () => {
 
     return () => clearInterval(interval);
   }, [])
-
-  useEffect(() => {
-    setWeather(w => {
-      return [ ...w, getFakeWeather() ]
-    });
-  }, []);
 
   const handleInput = e => {
     setCityInput(e.target.value)
