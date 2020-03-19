@@ -22,7 +22,7 @@ const getMinMaxTempForecast = (weather, day) => {
     const minTemp = weather.list[i].main.temp_min;
     const maxTemp = weather.list[i].main.temp_max;
     if (minTemp < min) min = minTemp;
-    if (maxTemp > max) max = minTemp;
+    if (maxTemp > max) max = maxTemp;
   }
 
   return { day, min, max };
