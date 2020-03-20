@@ -20,5 +20,7 @@ const CityList = ({ className, activeCity, weather, onSelect, onDelete }) => (
 export default styled(CityList)`
   display: flex;
   justify-content: center;
-  height: 40px;
+  align-items: center;
+  height: 75px;
+  overflow-y: scroll;
 `;
