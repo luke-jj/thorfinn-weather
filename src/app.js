@@ -112,8 +112,8 @@ const App = () => {
           activeCity={activeCity}
         />
         <div css={`
-          margin-top: 20px;
-          margin-bottom: 40px;
+          margin-top: 40px;
+          margin-bottom: 20px;
           display: flex;
           justify-content: center;
         `}>
