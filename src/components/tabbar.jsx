@@ -19,7 +19,7 @@ const TabWrapper = styled.div`
 
 export default styled(TabBar)`
   display: flex;
-  margin: 30px auto 10px;
+  margin: 20px auto 10px;
   width: 70%;
   align-items: center;
   height: 40px;
