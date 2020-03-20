@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line
 import styled from 'styled-components/macro';
+import _ from 'lodash';
 
 import { getWeather } from './services/weather';
 import { getCurrentUtcTime } from './services/time';
@@ -23,9 +24,7 @@ const App = () => {
       const { data: time } = await getCurrentUtcTime()
       setTime(time.currentUnixTime);
     };
-
     loadUtcTime();
-
     const interval = setInterval(() => {
       setTime(t => t + 1);
     }, 1000);
@@ -39,10 +38,22 @@ const App = () => {
 
   const handleSearch = async e => {
     e.preventDefault();
+
     try {
       const { data } = await getWeather(cityInput);
       setCityInput('');
-      setWeather(w => [ ...w, data ]);
+      setWeather(weather => {
+        const weatherArray = _.cloneDeep(weather);
+        const index = weatherArray.findIndex(w => w.city.id === data.city.id);
+        if (index === -1) {
+          weatherArray.push(data);
+        } else {
+          weatherArray.splice(index, 1, data);
+        }
+
+        return weatherArray;
+      });
+
       setActiveCity({ id: data.city.id, name: data.city.name });
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
@@ -56,9 +67,27 @@ const App = () => {
   };
 
   const handleDeleteRecent = (e, { id }) => {
-    if (id === activeCity.id) setActiveCity({});
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
+
+    if (id === activeCity.id) {
+      const index = weather.findIndex(city => city.city.id === id);
+
+      if (weather.length === 1) {
+        setActiveCity({});
+      } else if (weather.length === index+1) {
+        setActiveCity({
+          id: weather[index-1].city.id,
+          name: weather[index-1].city.name
+        });
+      } else {
+        setActiveCity({
+          id: weather[index+1].city.id,
+          name: weather[index+1].city.name
+        });
+      }
+    }
+
     setWeather(w => w.filter(city => city.city.id !== id));
   };
 
