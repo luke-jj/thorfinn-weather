@@ -7,7 +7,8 @@ import styled from 'styled-components/macro';
 
 import { getWeather } from './services/weather';
 import { getCurrentUtcTime } from './services/time';
-import { Searchbar, WeatherCard } from './components';
+import { Searchbar, WeatherCard, CityButton } from './components';
+import { Button } from './elements';
 import GlobalStyle from './globals/style';
 import Header from './layout/header';
 
@@ -15,7 +16,7 @@ const App = () => {
   const [weather, setWeather] = useState([]);
   const [time, setTime] = useState(0);
   const [cityInput, setCityInput] = useState('');
-  const [activeCity, setActiveCity] = useState(null);
+  const [activeCity, setActiveCity] = useState({});
 
   useEffect(() => {
     const loadUtcTime = async () => {
@@ -41,7 +42,7 @@ const App = () => {
     try {
       const { data } = await getWeather(cityInput);
       setCityInput('');
-      setWeather(w => [ data ]);
+      setWeather(w => [ ...w, data ]);
       setActiveCity({ id: data.city.id, name: data.city.name });
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
@@ -54,6 +55,21 @@ const App = () => {
     }
   };
 
+  const handleDeleteRecent = (e, { id }) => {
+    if (id === activeCity.id) setActiveCity({});
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+    setWeather(w => w.filter(city => city.city.id !== id));
+  };
+
+  const handleSelectCity = ({ name, id }) => {
+    setActiveCity({ id, name });
+  };
+
+  const getActiveCity = () => {
+    return weather.find(w => w.city.id === activeCity.id);
+  };
+
   return (
     <Router>
       <GlobalStyle />
@@ -61,8 +77,34 @@ const App = () => {
       <Header time={time}/>
       <Container>
         <div css={`
-          margin-top: 100px;
-          margin-bottom: 50px;
+          display: flex;
+          margin: 30px auto 10px;
+          width: 70%;
+          align-items: center;
+          height: 40px;
+        `}>
+          <Button small secondary active >Recent</Button>
+          <Button small secondary disabled >Favorites</Button>
+        </div>
+        <div css={`
+          display: flex;
+          justify-content: center;
+          height: 40px;
+        `}>
+          { weather.map(w => (
+            <div key={w.city.id}>
+              <CityButton
+                city={w.city}
+                onSelect={handleSelectCity}
+                onDelete={handleDeleteRecent}
+                active={activeCity.id === w.city.id}
+              />
+            </div>
+          ))}
+        </div>
+        <div css={`
+          margin-top: 20px;
+          margin-bottom: 40px;
           display: flex;
           justify-content: center;
         `}>
@@ -72,7 +114,7 @@ const App = () => {
             onSubmit={handleSearch}
           />
         </div>
-        { activeCity && <WeatherCard weather={weather[0]} time={time}/> }
+        { activeCity.id && <WeatherCard weather={getActiveCity()} time={time}/> }
       </Container>
     </Router>
   );
