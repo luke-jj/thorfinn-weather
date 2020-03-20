@@ -8,8 +8,7 @@ import _ from 'lodash';
 
 import { getWeather } from './services/weather';
 import { getCurrentUtcTime } from './services/time';
-import { Searchbar, WeatherCard, CityButton } from './components';
-import { Button } from './elements';
+import { Searchbar, WeatherCard, TabBar, CityList } from './components';
 import GlobalStyle from './globals/style';
 import Header from './layout/header';
 
@@ -105,32 +104,13 @@ const App = () => {
       <ToastContainer />
       <Header time={time}/>
       <Container>
-        <div css={`
-          display: flex;
-          margin: 30px auto 10px;
-          width: 70%;
-          align-items: center;
-          height: 40px;
-        `}>
-          <Button small secondary active >Recent</Button>
-          <Button small secondary disabled >Favorites</Button>
-        </div>
-        <div css={`
-          display: flex;
-          justify-content: center;
-          height: 40px;
-        `}>
-          { weather.map(w => (
-            <div key={w.city.id}>
-              <CityButton
-                city={w.city}
-                onSelect={handleSelectCity}
-                onDelete={handleDeleteRecent}
-                active={activeCity.id === w.city.id}
-              />
-            </div>
-          ))}
-        </div>
+        <TabBar />
+        <CityList
+          weather={weather}
+          onSelect={handleSelectCity}
+          onDelete={handleDeleteRecent}
+          activeCity={activeCity}
+        />
         <div css={`
           margin-top: 20px;
           margin-bottom: 40px;
