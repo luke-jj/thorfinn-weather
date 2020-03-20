@@ -37,10 +37,11 @@ const App = () => {
 
   const handleSearch = async e => {
     e.preventDefault();
+    const input = cityInput;
 
     try {
-      const { data } = await getWeather(cityInput);
       setCityInput('');
+      const { data } = await getWeather(input);
       setWeather(weather => {
         const weatherArray = _.cloneDeep(weather);
         const index = weatherArray.findIndex(w => w.city.id === data.city.id);
@@ -62,6 +63,7 @@ const App = () => {
       } else {
         toast.error('Something went wrong fetching the weather.');
       }
+      setCityInput(input);
     }
   };
 
