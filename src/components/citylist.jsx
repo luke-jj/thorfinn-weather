@@ -27,6 +27,7 @@ export default styled(CityList)`
   justify-content: center;
   align-items: center;
   height: 75px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 `
