@@ -30,4 +30,10 @@ export default styled(CityList)`
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none; /* Safari and Chrome */
+  }
 `
