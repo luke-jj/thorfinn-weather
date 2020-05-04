@@ -1,5 +1,5 @@
-import countryCodes from './country-names.json';
+import countryCodes from './country-names.json'
 
 export const getFullName = (code) => {
-  return countryCodes[code];
-};
+  return countryCodes[code]
+}

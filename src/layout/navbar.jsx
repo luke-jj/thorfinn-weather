@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { fontSize, fgDisabled } from '../utils';
+import React from 'react'
+import styled from 'styled-components/macro'
+import { fontSize, fgDisabled } from '../utils'
 
 const Navbar = ({ className }) => (
   <nav className={className}>
@@ -10,7 +10,7 @@ const Navbar = ({ className }) => (
       </li>
     </ul>
   </nav>
-);
+)
 
 export default styled(Navbar)`
   justify-self: end;
@@ -22,8 +22,8 @@ export default styled(Navbar)`
     list-style-type: none;
 
     li {
-        font-size: 26px;
-        color: ${fgDisabled};
+      font-size: 26px;
+      color: ${fgDisabled};
     }
   }
-`;
+`

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { fg, fgDisabled, fontSize, fontWeight, fontFamily } from '../utils';
+import styled from 'styled-components'
+import { fg, fgDisabled, fontSize, fontWeight, fontFamily } from '../utils'
 
 export const Input = styled.input`
   background: transparent;
@@ -15,8 +15,4 @@ export const Input = styled.input`
   ::placeholder {
     color: ${fgDisabled};
   }
-
-  &:active {
-
-  }
-`;
+`

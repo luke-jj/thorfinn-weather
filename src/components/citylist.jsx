@@ -4,7 +4,7 @@ import CityButton from './citybutton'
 
 const CityList = ({ className, activeCity, weather, onSelect, onDelete }) => (
   <div className={className}>
-    {weather.map(w => (
+    {weather.map((w) => (
       <div
         key={w.city.id}
         css={`

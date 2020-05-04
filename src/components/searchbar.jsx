@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Input } from '../elements';
-import { shadows } from '../utils';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { Input } from '../elements'
+import { shadows } from '../utils'
 
 const Searchbar = ({ className, input, onChange, onSubmit }) => (
   <form onSubmit={onSubmit}>
@@ -15,12 +15,12 @@ const Searchbar = ({ className, input, onChange, onSubmit }) => (
       />
     </div>
   </form>
-);
+)
 
 Searchbar.propTypes = {
   input: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default styled(Searchbar)`
@@ -28,14 +28,14 @@ export default styled(Searchbar)`
   height: 56px;
   border-radius: 30px;
   padding: 5px 10px;
-  background-color: rgba(255, 255, 255, .15);
+  background-color: rgba(255, 255, 255, 0.15);
   text-align: center;
-  transition: background-color .3s ease-out, box-shadow .3s ease-out;
+  transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out;
   display: flex;
   align-items: center;
 
   &:hover {
-    background-color: rgba(255, 255, 255, .3);
+    background-color: rgba(255, 255, 255, 0.3);
     ${shadows[1]}
   }
-`;
+`

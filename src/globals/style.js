@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'polished';
-import { bg, fg, fontFamily, fontSize, fontWeight } from '../utils';
+import { createGlobalStyle } from 'styled-components'
+import { normalize } from 'polished'
+import { bg, fg, fontFamily, fontSize, fontWeight } from '../utils'
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -32,6 +32,6 @@ const GlobalStyle = createGlobalStyle`
     // margin: 0 auto;
   }
 
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

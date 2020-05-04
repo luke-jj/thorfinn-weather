@@ -1,7 +1,24 @@
 {
   "name": "thorfinn-weather",
+  "description": "A web-based weather application.",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "author": "Luca J",
+  "homepage": "https://weather.lucajoos.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luke-jj/thorfinn-weather"
+  },
+  "bugs": {
+    "url": "https://github.com/luke-jj/thorfinn-weather/issues"
+  },
+  "keywords": [
+    "weather",
+    "forecast",
+    "react",
+    "redux"
+  ],
   "dependencies": {
     "@sentry/browser": "^5.13.0",
     "@testing-library/jest-dom": "^4.2.4",

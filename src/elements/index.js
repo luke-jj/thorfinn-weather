@@ -1,7 +1,7 @@
-import Link from './link';
+import Link from './link'
 
-export * from './headings';
-export * from './input';
-export * from './button';
+export * from './headings'
+export * from './input'
+export * from './button'
 
-export { Link };
+export { Link }

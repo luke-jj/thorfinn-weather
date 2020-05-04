@@ -1,7 +1,7 @@
-import http from './http';
+import http from './http'
 
-const apiEndpoint = "time";
+const apiEndpoint = 'time'
 
 export const getCurrentUtcTime = () => {
-  return http.get(apiEndpoint);
-};
+  return http.get(apiEndpoint)
+}

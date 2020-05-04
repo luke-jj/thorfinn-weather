@@ -1,30 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import moment from 'moment';
-import { fgDisabled, fontSize } from '../utils';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import moment from 'moment'
+import { fgDisabled, fontSize } from '../utils'
 
 const Clock = ({ time, className }) => (
   <div className={className}>
     UTC Time
     <br />
-    {moment.unix(time).utc().format("HH : mm : ss")}
+    {moment.unix(time).utc().format('HH : mm : ss')}
     <br />
-    {time > 60 ? (
-      moment.unix(time).utc().format("dddd, MMMM Do YYYY")
-    ) : (
-      '\u00A0'
-    )}
+    {time > 60
+      ? moment.unix(time).utc().format('dddd, MMMM Do YYYY')
+      : '\u00A0'}
   </div>
-);
+)
 
 Clock.propTypes = {
-  time: PropTypes.number.isRequired
-};
+  time: PropTypes.number.isRequired,
+}
 
 export default styled(Clock)`
   justify-self: center;
   color: ${fgDisabled};
   font-size: ${fontSize.lead};
   text-align: center;
-`;
+`

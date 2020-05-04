@@ -1,5 +1,12 @@
-import styled, { css } from 'styled-components';
-import { fg, fgDisabled, shadows, fontFamily, fontSize, fontWeight } from '../utils';
+import styled, { css } from 'styled-components'
+import {
+  fg,
+  fgDisabled,
+  shadows,
+  fontFamily,
+  fontSize,
+  fontWeight,
+} from '../utils'
 
 export const Button = styled.button`
   min-width: 76px;
@@ -26,34 +33,44 @@ export const Button = styled.button`
     ${shadows[1]}
   }
 
-  ${({ small }) => small && css`
-    min-width: 76px;
-    height: 26px;
-    border-radius: 13px;
-    padding: 5px 10px;
-  `}
-
-  ${({ active }) => active && css`
-    background-color: rgba(255, 255, 255, .3);
-  `}
-
-  ${({ secondary }) => secondary && css`
-    background-color: rgba(0, 0, 0, .04);
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.16);
-    }
-    ${({ active }) => active && css`
-      background-color: rgba(0, 0, 0, 0.16);
+  ${({ small }) =>
+    small &&
+    css`
+      min-width: 76px;
+      height: 26px;
+      border-radius: 13px;
+      padding: 5px 10px;
     `}
-  `}
 
-  ${({ disabled }) => disabled && css`
-    cursor: default;
-    color: ${fgDisabled};
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: rgba(255, 255, 255, 0.3);
+    `}
 
-    &:hover {
-      background-color: rgba(0, 0, 0, .04);
-      box-shadow: none;
-    }
-  `}
-`;
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      background-color: rgba(0, 0, 0, 0.04);
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.16);
+      }
+      ${({ active }) =>
+        active &&
+        css`
+          background-color: rgba(0, 0, 0, 0.16);
+        `}
+    `}
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: default;
+      color: ${fgDisabled};
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        box-shadow: none;
+      }
+    `}
+`

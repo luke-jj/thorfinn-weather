@@ -1,5 +1,5 @@
-import weather from './fakeWeather.json';
+import weather from './fakeWeather.json'
 
 export const getWeather = () => {
-  return weather;
-};
+  return weather
+}

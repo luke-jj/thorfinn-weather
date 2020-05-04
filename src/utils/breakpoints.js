@@ -1,10 +1,10 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components'
 
 const breakpoints = {
   small: 400,
   med: 960,
-  large: 1140
-};
+  large: 1140,
+}
 
 export const above = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
@@ -12,8 +12,8 @@ export const above = Object.keys(breakpoints).reduce((acc, label) => {
       ${css(...args)}
     }
   `
-  return acc;
-}, {});
+  return acc
+}, {})
 
 export const below = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
@@ -21,5 +21,5 @@ export const below = Object.keys(breakpoints).reduce((acc, label) => {
       ${css(...args)}
     }
   `
-  return acc;
-}, {});
+  return acc
+}, {})
